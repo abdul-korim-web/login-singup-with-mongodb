@@ -1,5 +1,6 @@
 import express from "express"
 import dotenv from "dotenv"
+import mongoose from "mongoose"
 
 // app initialization 
 const app = express()
@@ -7,6 +8,10 @@ const app = express()
 // middeleware 
 dotenv.config()
 
+// mongodb   database connection with mongoose 
+mongoose.connect(process.env.MONGODB_URL)
+.then(()=>console.log(`database connection success`))
+.catch((err)=>console.log(err?.message || err))
 
 
 
