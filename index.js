@@ -2,6 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
 import { singupRoute } from "./src/Routes/singupRoute.js"
+import { loginRoute } from "./src/Routes/loginRoute.js"
 
 // app initialization 
 const app = express()
@@ -19,6 +20,7 @@ mongoose.connect(process.env.MONGODB_URL)
 
 //  routes
 app.use("/singup",singupRoute)
+app.use("/login",loginRoute)
 
 
 
