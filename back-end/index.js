@@ -3,10 +3,16 @@ import dotenv from "dotenv"
 import mongoose from "mongoose"
 import { singupRoute } from "./src/Routes/singupRoute.js"
 import { loginRoute } from "./src/Routes/loginRoute.js"
+import cors from "cors"
+import cookieParser from "cookie-parser";
 
 // app initialization 
 const app = express()
-
+app.use(cors({
+    origin:"http://localhost:5173",
+    credentials:true
+}))
+app.use(cookieParser())
 
 // middeleware 
 app.use(express.json())

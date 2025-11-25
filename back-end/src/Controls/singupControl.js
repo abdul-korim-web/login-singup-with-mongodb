@@ -11,12 +11,12 @@ export const singupControl = async(req,res,next)=>{
         }
         const  isExitEmail=await User.findOne({email:email})
         if (isExitEmail) {
-            return res.status(400).json({status:400,nmessage:"This email is already exists"})
+            return res.status(400).json({status:400,message:"This email is already exists"})
             
         }
         
         const hashPasword = await bcrypt.hash(password,10)
-        const newUser=await User.insertOne({username,email,password:hashPasword})
+        const newUser=await User.create({username,email,password:hashPasword})
         res.status(200).json({status:200,message:"singUp success😍"})
         console.log("singup success😍");
     } catch (error) {
